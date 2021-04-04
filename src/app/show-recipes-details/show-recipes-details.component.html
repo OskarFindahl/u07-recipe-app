@@ -1,0 +1,5 @@
+<h2>RECIPE DETAILS</h2>
+<div *ngIf="recipe$ | async as recipe">
+  <h3>"{{ recipe.title }}"</h3>
+  <div><label>Id: </label>{{ recipe.id }}</div>
+</div>
