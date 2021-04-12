@@ -6,6 +6,10 @@
 <button (click)="mealType('', 'gluten-free')">Gluten Free</button>
 <button (click)="mealType('', 'vegan')">Vegan</button>
 
+<a routerLink="/UserRecipesList" routerLinkActive="active">
+  <h2>Show user List</h2>
+</a>
+
 <h2>RECIPES</h2>
 <ul class="recipes">
   <li *ngFor="let recipe of (recipes$ | async)?.results">
@@ -15,5 +19,8 @@
 
       <img src="{{ recipe.image }}" alt="" />
     </a>
+    <button id="{{ recipe.id }}+{{ recipe.title }}" (click)="addToList($event)">
+      Add To List
+    </button>
   </li>
 </ul>

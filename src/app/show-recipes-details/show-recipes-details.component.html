@@ -2,4 +2,5 @@
 <div *ngIf="recipe$ | async as recipe">
   <h3>"{{ recipe.title }}"</h3>
   <div><label>Id: </label>{{ recipe.id }}</div>
+  <a [routerLink]="['/UserRecipesList', 'recipe.id']"><p>Add To List</p></a>
 </div>

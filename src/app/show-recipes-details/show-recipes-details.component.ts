@@ -14,6 +14,7 @@ import { Recipe } from '../recipe';
 })
 export class ShowRecipesDetailsComponent implements OnInit {
   recipe$: Observable<Recipe>
+  
 
   constructor(
     private route: ActivatedRoute,

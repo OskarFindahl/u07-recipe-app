@@ -45,4 +45,15 @@ export class ShowRecipesComponent implements OnInit {
 
   }
 
+  addToList(event?: MouseEvent){
+    const id = (event.target as HTMLElement).id
+
+    this.RecipeService.AddToList(id);
+    
+
+    
+  }
+
+
+
 }
