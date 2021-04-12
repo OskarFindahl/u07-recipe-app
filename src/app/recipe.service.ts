@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, concat, empty, forkJoin } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,12 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
   getRecipes(mealType, diet): Observable<any> {
     //
-    console.log(this.http.get<any>(`https://api.spoonacular.com/recipes/complexSearch?type=${mealType}&diet=${diet}&apiKey=6da6418b7fef4143b95505e36e83602c`));
-    return this.http.get<any>(`https://api.spoonacular.com/recipes/complexSearch?type=${mealType}&diet=${diet}&apiKey=6da6418b7fef4143b95505e36e83602c`);
+    return this.http.get<any>(`https://api.spoonacular.com/recipes/complexSearch?type=${mealType}&diet=${diet}&apiKey=${environment.API_KEY}`);
   };
 
   getRecipeFromId(id): Observable<any> {
     
-    return this.http.get<any>(`https://api.spoonacular.com/recipes/${id}/information?apiKey=6da6418b7fef4143b95505e36e83602c`);
+    return this.http.get<any>(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`);
   };
 
   AddToList(recipe): any{
@@ -33,13 +33,4 @@ export class RecipeService {
     
   }
 
-  // getRecipeFromUserList(): Observable<any>{
-  //   console.log('id' + this.ListItems)
-  //    this.ListItems.forEach((element,index) => {
-  //      console.log("hej");
-  //      const example = forkJoin(const,this.http.get<any>(`https://api.spoonacular.com/recipes/${element}/information?apiKey=6da6418b7fef4143b95505e36e83602c`)); //this.getRecipeFromId(element)
-  //    });
-  //    console.log(this.ListRecipes)
-  //   return this.ListRecipes;
-  // }
 }
