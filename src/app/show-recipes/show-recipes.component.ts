@@ -44,7 +44,6 @@ export class ShowRecipesComponent implements OnInit {
     this.valMem = value;
     this.dietMem= diet;
 
-    alert(this.valMem + this.dietMem);
 
   }
 

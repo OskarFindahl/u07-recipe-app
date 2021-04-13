@@ -1,20 +1,48 @@
-<button (click)="mealType('main-corse', '')">Main Corse</button>
-<button (click)="mealType('appetizer', '')">appetizer</button>
-<button (click)="mealType('dessert', '')">dessert</button>
-<br />
-<button (click)="mealType('', 'vegetarian')">vegetarian</button>
-<button (click)="mealType('', 'gluten-free')">Gluten Free</button>
-<button (click)="mealType('', 'vegan')">Vegan</button>
+<div class="w-full h-18 flex justify-center">
+  <button
+    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('main-corse', '')"
+  >
+    Main Corse
+  </button>
+  <button
+    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('appetizer', '')"
+  >
+    Appetizer
+  </button>
+  <button
+    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('dessert', '')"
+  >
+    Dessert
+  </button>
+</div>
+<div class="w-full h-18 flex justify-center">
+  <button
+    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('', 'vegetarian')"
+  >
+    Vegetarian
+  </button>
+  <button
+    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('', 'gluten-free')"
+  >
+    Gluten Free
+  </button>
+  <button
+    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    (click)="mealType('', 'vegan')"
+  >
+    Vegan
+  </button>
+</div>
 
-<a routerLink="/UserRecipesList" routerLinkActive="active">
-  <h2>Show user List</h2>
-</a>
-
-<h2>RECIPES</h2>
 <ul class="recipes">
   <li *ngFor="let recipe of (recipes$ | async)?.results">
     <a [routerLink]="['/ShowRecipesDetails', recipe.id]">
-      <span class="badge">{{ recipe.id }}</span>
+      <span class="badge bg-red-500">{{ recipe.id }}</span>
       <p>{{ recipe.title }}</p>
 
       <img src="{{ recipe.image }}" alt="" />

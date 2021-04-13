@@ -6,7 +6,21 @@
 <button (click)="mealType('', 'gluten-free')">Gluten Free</button>
 <button (click)="mealType('', 'vegan')">Vegan</button> -->
 
-<a routerLink="/ShowRecipes" routerLinkActive="active">
-  <p>Home</p>
-</a>
+<div class="w-full h-18 flex justify-center">
+  <a
+    class="text-center w-56 bg-yellow-500 hover:bg-yellow-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    routerLink="/ShowRecipes"
+    routerLinkActive="active"
+  >
+    <p>Home</p>
+  </a>
+
+  <a
+    class="text-center w-56 bg-yellow-500 hover:bg-yellow-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    routerLink="/UserRecipesList"
+    routerLinkActive="active"
+  >
+    <h2>Favorites</h2>
+  </a>
+</div>
 <router-outlet></router-outlet>
