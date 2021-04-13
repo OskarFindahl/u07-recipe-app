@@ -25,5 +25,8 @@
   <a [routerLink]="['/ShowRecipesDetails', ids[i]]">
     <h3>"{{ name }}"</h3>
   </a>
+  <button id="{{ i }}" (click)="RemoveFromList($event)">
+    Remove From List {{ i }}
+  </button>
   <router-outlet></router-outlet>
 </div>

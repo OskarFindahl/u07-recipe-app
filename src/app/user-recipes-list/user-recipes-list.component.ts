@@ -30,4 +30,9 @@ export class UserRecipesListComponent implements OnInit {
 
   }
 
+  RemoveFromList(event?: MouseEvent){
+    const index = (event.target as HTMLElement).id;
+    this.RecipeService.RemoveFromList(index);
+  }
+
 }

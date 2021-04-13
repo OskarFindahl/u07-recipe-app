@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe';
 import { decimalDigest } from '@angular/compiler/src/i18n/digest';
 
+
+
 @Component({
   selector: 'app-show-recipes',
   templateUrl: './show-recipes.component.html',
@@ -18,6 +20,7 @@ export class ShowRecipesComponent implements OnInit {
   dietMem: string;
   recipes$: Observable<Recipe[]>;
   selectedId: number;
+
 
   constructor(
     private RecipeService: RecipeService,
@@ -46,12 +49,8 @@ export class ShowRecipesComponent implements OnInit {
   }
 
   addToList(event?: MouseEvent){
-    const id = (event.target as HTMLElement).id
-
+    const id = (event.target as HTMLElement).id;
     this.RecipeService.AddToList(id);
-    
-
-    
   }
 
 

@@ -25,12 +25,17 @@ export class RecipeService {
   AddToList(recipe): any{
     
     var index = recipe.indexOf("+");
-    this.ListIDs.push(recipe.slice(0, index));
-    this.ListINames.push(recipe.slice(index+1));
-    console.log(this.ListIDs);
-    console.log(this.ListINames);
-    
-    
+    if(!this.ListIDs.includes(recipe.slice(0, index))){
+      this.ListIDs.push(recipe.slice(0, index));
+      this.ListINames.push(recipe.slice(index+1));
+    }
+  
+ 
+  }
+
+  RemoveFromList(index): any{
+    this.ListIDs.splice(index, 1);
+    this.ListINames.splice(index, 1);
   }
 
 }
