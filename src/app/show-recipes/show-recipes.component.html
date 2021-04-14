@@ -39,16 +39,60 @@
   </button>
 </div>
 
-<ul class="recipes">
-  <li *ngFor="let recipe of (recipes$ | async)?.results">
-    <a [routerLink]="['/ShowRecipesDetails', recipe.id]">
-      <span class="badge bg-red-500">{{ recipe.id }}</span>
-      <p>{{ recipe.title }}</p>
-
-      <img src="{{ recipe.image }}" alt="" />
-    </a>
-    <button id="{{ recipe.id }}+{{ recipe.title }}" (click)="addToList($event)">
-      Add To List
-    </button>
-  </li>
-</ul>
+<div class="w-full flex justify-center">
+  <ul
+    class="recipes grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 max-w-7xl"
+  >
+    <li *ngFor="let recipe of (recipes$ | async)?.results">
+      <div
+        class="flex max-w-sm w-80 bg-white shadow-md rounded-lg overflow-hidden mx-auto"
+      >
+        <div class="flex items-center w-full px-2 py-3">
+          <div class="mx-3 w-full">
+            <div class="flex flex-row mb-6 mt-2">
+              <div
+                class="mr-1 h-2 w-8 bg-blue-600 rounded-full cursor-pointer"
+              ></div>
+              <div
+                class="mr-1 h-2 w-8 bg-red-600 rounded-full cursor-pointer"
+              ></div>
+              <div
+                class="mr-1 h-2 w-8 bg-yellow-400 rounded-full cursor-pointer"
+              ></div>
+            </div>
+            <a [routerLink]="['/ShowRecipesDetails', recipe.id]">
+              <div class="flex flex-row mb-4">
+                <div class="flex flex-col mb-4 ml-4 mt-1">
+                  <div class="text-gray-600 font-semibold">
+                    {{ recipe.title }}
+                  </div>
+                </div>
+              </div>
+              <div
+                class="text-gray-400 font-medium text-sm border-2 border-gray-300 rounded-md cursor-pointer mb-10"
+              >
+                <img class="rounded" src="{{ recipe.image }}" />
+              </div>
+            </a>
+            <div class="flex justify-start mb-4">
+              <div class="flex w-full justify-evenly mt-1">
+                <div class="font-medium text-xs">
+                  <span
+                    class="bg-red-400 px-2 py-1 text-center rounded text-gray-100 cursor-pointer"
+                    ><i class="fas fa-tasks"></i
+                    ><button
+                      id="{{ recipe.id }}+{{ recipe.title }}"
+                      (click)="addToList($event)"
+                    >
+                      Favorite
+                    </button></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
