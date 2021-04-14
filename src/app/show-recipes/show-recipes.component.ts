@@ -32,6 +32,7 @@ export class ShowRecipesComponent implements OnInit {
      return this.recipes$ = this.RecipeService.getRecipes('main-corse', '');
 }
 
+//get recipe with specific mealtype (value) and diet 
   mealType(value, diet) {
     if (value === '') {
       value = this.valMem;
@@ -47,6 +48,7 @@ export class ShowRecipesComponent implements OnInit {
 
   }
 
+  //Add to List
   addToList(event?: MouseEvent){
     const id = (event.target as HTMLElement).id;
     this.RecipeService.AddToList(id);

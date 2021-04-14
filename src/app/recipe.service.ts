@@ -7,8 +7,10 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class RecipeService {
+  //For User List
   ListIDs: Array<number> = [];
   ListINames: Array<string> = [];
+
   ListRecipes: Observable<any>;
 
   constructor(private http: HttpClient) { }
@@ -22,22 +24,19 @@ export class RecipeService {
     return this.http.get<any>(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`);
   };
 
-  
 
+
+  //For User List
   AddToList(recipe): any{
-    
     var index = recipe.indexOf("+");
     if(!this.ListIDs.includes(recipe.slice(0, index))){
       this.ListIDs.push(recipe.slice(0, index));
       this.ListINames.push(recipe.slice(index+1));
     }
-  
- 
   }
 
   RemoveFromList(index): any{
     this.ListIDs.splice(index, 1);
     this.ListINames.splice(index, 1);
   }
-
 }

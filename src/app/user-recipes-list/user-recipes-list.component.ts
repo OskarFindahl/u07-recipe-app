@@ -13,6 +13,7 @@ import { Recipe } from '../recipe';
 })
 export class UserRecipesListComponent implements OnInit {
  
+  //For user List
   names: Array<string>;
   ids: Array<number>
 
@@ -30,6 +31,7 @@ export class UserRecipesListComponent implements OnInit {
 
   }
 
+  //Remove from user list
   RemoveFromList(event?: MouseEvent){
     const index = (event.target as HTMLElement).id;
     this.RecipeService.RemoveFromList(index);
