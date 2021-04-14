@@ -1,32 +1,20 @@
-<!-- <h2>RECIPE DETAILS</h2>
-<div *ngIf="recipe$ | async as recipe">
-  <h3>"{{ recipe.title }}"</h3>
-  <div><label>Id: </label>{{ recipe.id }}</div>
-  <a [routerLink]="['/UserRecipesList', 'recipe.id']"><p>Add To List</p></a>
-</div> -->
-
-<!-- <h2>RECIPES</h2>
-<ul class="recipes">
-  <li *ngFor="let recipe of (recipes$ | async)?.results">
-    <a [routerLink]="['/UserRecipesList', recipe.id]">
-      <span class="badge">{{ recipe.id }}</span>
-      <p>{{ recipe.title }}</p>
-
-      <img src="{{ recipe.image }}" alt="" />
-    </a>
-    <button id="{{ recipe.id }}" (click)="addToList($event)">
-      Add To List
-    </button>
-  </li>
-</ul> -->
-
-<h2>RECIPE DETAILS</h2>
 <div *ngFor="let name of names; let i = index">
-  <a [routerLink]="['/ShowRecipesDetails', ids[i]]">
-    <h3>"{{ name }}"</h3>
-  </a>
-  <button id="{{ i }}" (click)="RemoveFromList($event)">
-    Remove From List {{ i }}
-  </button>
-  <router-outlet></router-outlet>
+  <div class="w-full h-18 flex justify-center">
+    <a [routerLink]="['/ShowRecipesDetails', ids[i]]">
+      <div class="bg-gray shadow-md p-2 rounded my-6">
+        <h3
+          class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark"
+        >
+          "{{ name }}"
+        </h3>
+      </div>
+    </a>
+    <button
+      class="p-2 my-2 bg-red-500 text-white rounded-md focus:outline-none focus:ring-2 ring-red-300 ring-offset-2"
+      id="{{ i }}"
+      (click)="RemoveFromList($event)"
+    >
+      Remove
+    </button>
+  </div>
 </div>

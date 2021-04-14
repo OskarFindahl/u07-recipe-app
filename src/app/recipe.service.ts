@@ -22,6 +22,8 @@ export class RecipeService {
     return this.http.get<any>(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`);
   };
 
+  
+
   AddToList(recipe): any{
     
     var index = recipe.indexOf("+");
