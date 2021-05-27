@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe';
 import { decimalDigest } from '@angular/compiler/src/i18n/digest';
+import { AuthStateService } from '../shared/auth-state.service';
 
 
 
@@ -20,15 +21,21 @@ export class ShowRecipesComponent implements OnInit {
   dietMem: string;
   recipes$: Observable<Recipe[]>;
   selectedId: number;
+  isSignedIn: boolean;
 
 
   constructor(
     private RecipeService: RecipeService,
     private route: ActivatedRoute,
+    private auth: AuthStateService,
+
     ) {
   }
   ngOnInit() {
 
+    this.auth.userAuthState.subscribe(val => {
+      this.isSignedIn = val;
+  });
      return this.recipes$ = this.RecipeService.getRecipes('main-corse', '');
 }
 
