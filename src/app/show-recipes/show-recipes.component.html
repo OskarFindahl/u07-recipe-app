@@ -1,18 +1,57 @@
 <div class="w-full h-18 flex justify-center">
   <button
-    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-blue-500
+      hover:bg-blue-200
+      text-blue-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('main-corse', '')"
   >
     Main Corse
   </button>
   <button
-    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-blue-500
+      hover:bg-blue-200
+      text-blue-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('appetizer', '')"
   >
     Appetizer
   </button>
   <button
-    class="w-36 bg-blue-500 hover:bg-blue-200 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-blue-500
+      hover:bg-blue-200
+      text-blue-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('dessert', '')"
   >
     Dessert
@@ -20,19 +59,58 @@
 </div>
 <div class="w-full h-18 flex justify-center">
   <button
-    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-green-500
+      hover:bg-green-200
+      text-green-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('', 'vegetarian')"
   >
     Vegetarian
   </button>
   <button
-    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-green-500
+      hover:bg-green-200
+      text-green-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('', 'gluten-free')"
   >
     Gluten Free
   </button>
   <button
-    class="w-36 bg-green-500 hover:bg-green-200 text-green-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-2"
+    class="
+      w-36
+      bg-green-500
+      hover:bg-green-200
+      text-green-dark
+      font-semibold
+      hover:text-white
+      py-2
+      px-4
+      border border-blue
+      hover:border-transparent
+      rounded
+      mr-2
+    "
     (click)="mealType('', 'vegan')"
   >
     Vegan
@@ -41,11 +119,28 @@
 
 <div class="w-full flex justify-center">
   <ul
-    class="recipes grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 max-w-7xl"
+    class="
+      recipes
+      grid
+      lg:grid-cols-3
+      md:grid-cols-2
+      grid-cols-1
+      gap-4
+      max-w-7xl
+    "
   >
     <li *ngFor="let recipe of (recipes$ | async)?.results">
       <div
-        class="flex max-w-sm w-80 bg-white shadow-md rounded-lg overflow-hidden mx-auto"
+        class="
+          flex
+          max-w-sm
+          w-80
+          bg-white
+          shadow-md
+          rounded-lg
+          overflow-hidden
+          mx-auto
+        "
       >
         <div class="flex items-center w-full px-2 py-3">
           <div class="mx-3 w-full">
@@ -69,7 +164,15 @@
                 </div>
               </div>
               <div
-                class="text-gray-400 font-medium text-sm border-2 border-gray-300 rounded-md cursor-pointer mb-10"
+                class="
+                  text-gray-400
+                  font-medium
+                  text-sm
+                  border-2 border-gray-300
+                  rounded-md
+                  cursor-pointer
+                  mb-10
+                "
               >
                 <img class="rounded" src="{{ recipe.image }}" />
               </div>
@@ -78,7 +181,16 @@
               <div class="flex w-full justify-evenly mt-1">
                 <div class="font-medium text-xs">
                   <span
-                    class="bg-red-400 px-2 py-1 text-center rounded text-gray-100 cursor-pointer"
+                    *ngIf="isSignedIn"
+                    class="
+                      bg-red-400
+                      px-2
+                      py-1
+                      text-center
+                      rounded
+                      text-gray-100
+                      cursor-pointer
+                    "
                     ><i class="fas fa-tasks"></i
                     ><button
                       id="{{ recipe.id }}+{{ recipe.title }}"
