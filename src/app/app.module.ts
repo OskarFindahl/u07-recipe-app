@@ -10,6 +10,7 @@ import { ShowRecipesDetailsComponent } from './show-recipes-details/show-recipes
 import { UserRecipesListComponent } from './user-recipes-list/user-recipes-list.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { SigninComponent } from './signin/signin.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
