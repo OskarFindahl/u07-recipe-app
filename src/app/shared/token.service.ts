@@ -13,12 +13,17 @@ export class TokenService {
 
   constructor() { }
 
-  handleData(token){
+  handleData(token, userId){
     localStorage.setItem('auth_token', token);
+    localStorage.setItem('user_id', userId);
   }
 
   getToken(){
     return localStorage.getItem('auth_token');
+  }
+
+  getUserId(){
+    return localStorage.getItem('user_id');
   }
 
   // Verify the token
