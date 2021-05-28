@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TokenService } from './token.service';
 
 // User interface
 export class User {
@@ -10,13 +11,20 @@ export class User {
   password_confirmation: String
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  
+
+  constructor(
+    private http: HttpClient,
+    public TokenService: TokenService,
+  
+  ) { }
 
   // User registration
   register(user: User): Observable<any> {
@@ -32,5 +40,14 @@ export class AuthService {
   profileUser(): Observable<any> {
     return this.http.get('http://localhost/api/auth/user-profile');
   }
+
+  addToList(id, name): Observable<any> {
+    const userId = this.TokenService.getUserId();
+    const data = { 'item_id': id, 'user_id': userId}; 
+    
+    return this.http.post(`http://localhost/api/auth/list`, data);
+  }
+
+
 
 }
