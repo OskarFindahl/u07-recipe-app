@@ -34,10 +34,12 @@ export class SigninComponent implements OnInit {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.responseHandler(result);
+          
         },
         error => {
           this.errors = error.error;
         },() => {
+          
           this.authState.setAuthState(true);
           this.loginForm.reset()
           this.router.navigate(['ShowRecipes']);
@@ -47,7 +49,8 @@ export class SigninComponent implements OnInit {
 
   // Handle response
   responseHandler(data){
-    this.token.handleData(data.access_token);
+
+    this.token.handleData(data.access_token,data.user.id);
   }
 
 }
