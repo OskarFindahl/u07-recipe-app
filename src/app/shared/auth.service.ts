@@ -43,9 +43,17 @@ export class AuthService {
 
   addToList(id, name): Observable<any> {
     const userId = this.TokenService.getUserId();
-    const data = { 'item_id': id, 'user_id': userId}; 
+    const data = { 'list_id': 3, 'item_id': id, 'user_id': userId}; 
     
     return this.http.post(`http://localhost/api/auth/list`, data);
+  }
+
+  addNewList(name): Observable<any> {
+    const userId = this.TokenService.getUserId();
+    const data = { 'name': name.List, 'user_id': userId}; 
+    
+   
+    return this.http.post(`http://localhost/api/auth/listname`, data);
   }
 
 

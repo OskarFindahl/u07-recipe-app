@@ -40,7 +40,7 @@ export class RecipeService {
     }
 
 
-    //This is for the API-List connection 
+    //This is for the API-List connection
     this.AuthService.addToList(recipe.slice(0, index), recipe.slice(index+1)).subscribe((data:any) => {
       console.log(data);
     });

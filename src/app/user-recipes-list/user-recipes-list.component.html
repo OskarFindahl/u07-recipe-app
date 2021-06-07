@@ -1,3 +1,16 @@
+<form [formGroup]="AddToListForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" style="background-color: bisque">
+    <label style="font-size: x-large">New List</label>
+    <input formControlName="List" style="margin: 10px" />
+
+    <button type="submit" style="background-color: wheat; padding: 10px">
+      Add List
+    </button>
+  </div>
+</form>
+
+<h1>Heellluu</h1>
+
 <div *ngFor="let name of names; let i = index">
   <div class="w-full h-18 flex justify-center">
     <a [routerLink]="['/ShowRecipesDetails', ids[i]]">

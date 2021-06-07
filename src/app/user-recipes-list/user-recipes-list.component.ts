@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { AuthService } from '../shared/auth.service';
+
 @Component({
   selector: 'app-user-recipes-list',
   templateUrl: './user-recipes-list.component.html',
@@ -13,6 +16,7 @@ import { Recipe } from '../recipe';
 })
 export class UserRecipesListComponent implements OnInit {
  
+  AddToListForm: FormGroup;
   //For user List
   names: Array<string>;
   ids: Array<number>
@@ -20,8 +24,14 @@ export class UserRecipesListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private RecipeService: RecipeService
-  ) { }
+    private RecipeService: RecipeService,
+    public authService: AuthService,
+    public fb: FormBuilder,
+  ) {
+    this.AddToListForm = this.fb.group({
+      List: [],
+    })
+  }
 
   ngOnInit() {
 
@@ -30,6 +40,20 @@ export class UserRecipesListComponent implements OnInit {
     
 
   }
+
+
+  onSubmit() {
+    this.authService.addNewList(this.AddToListForm.value).subscribe(
+      result => {
+        
+        console.log(result);
+      },
+      
+        
+       
+       
+    );
+}
 
   //Remove from user list
   RemoveFromList(event?: MouseEvent){
