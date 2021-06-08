@@ -68,6 +68,19 @@
   </a>
 </div>
 
+<form
+  [formGroup]="SelectListForm"
+  (ngSubmit)="onSubmit()"
+  formGroupeName="SelectListForm"
+>
+  <select class="custom-select" (change)="changeList($event)">
+    <option value="" disabled>Choose your city</option>
+    <option *ngFor="let chooseList of Lists" [ngValue]="chooseList">
+      {{ chooseList }}
+    </option>
+  </select>
+</form>
+
 <nav>
   <a *ngIf="!isSignedIn" routerLink="/login">Log in</a>
   <a routerLink="/register">Register</a>

@@ -18,6 +18,8 @@ export class User {
 
 export class AuthService {
 
+
+
   
 
   constructor(
@@ -55,6 +57,14 @@ export class AuthService {
    
     return this.http.post(`http://localhost/api/auth/listname`, data);
   }
+
+
+  getLists(): Observable<any> {
+    // const token = this.TokenService.getToken();
+    
+    return this.http.get(`http://localhost/api/auth/listname`);
+  }
+
 
 
 
