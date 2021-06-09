@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-
 import { RecipeService } from '../recipe.service';
-import { Recipe } from '../recipe';
-
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from '../shared/auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-user-recipes-list',
@@ -17,42 +13,41 @@ import { AuthService } from '../shared/auth.service';
 export class UserRecipesListComponent implements OnInit {
  
   AddToListForm: FormGroup;
-  //For user List
-  names: Array<string>;
+  names: any;
   ids: Array<number>
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private RecipeService: RecipeService,
     public authService: AuthService,
     public fb: FormBuilder,
+    private appComponent: AppComponent,
   ) {
     this.AddToListForm = this.fb.group({
       List: [],
     })
   }
 
-  ngOnInit() {
-
-    this.names = this.RecipeService.ListINames;
-    this.ids = this.RecipeService.ListIDs;
-    
+  ngOnInit() 
+  {
+    this.authService.getRecipesFromList().subscribe(
+      result => 
+      {
+        this.names = result.map(item => item.item_name);
+        this.ids = result.map(item => item.item_id); 
+      }
+    );
 
   }
 
 
-  onSubmit() {
+  onSubmit() 
+  {
     this.authService.addNewList(this.AddToListForm.value).subscribe(
-      result => {
-        
-        console.log(result);
+      result => 
+      {
+        this.appComponent.updateUserList();
       },
-      
-        
-       
-       
-    );
+  );
 }
 
   //Remove from user list

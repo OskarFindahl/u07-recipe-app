@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { TokenService } from './shared/token.service';
 import { AuthStateService } from './shared/auth-state.service';
 import { AuthService } from './shared/auth.service';
-
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 
 
 @Component({
@@ -17,19 +16,14 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 
 export class AppComponent implements OnInit {
   title = 'u07-recipe-app';
+
   isSignedIn: boolean;
-
-  ListType: string;
-
-
-
-  
-  // City Names
-  Lists: any; //= ['Florida', 'South Dakota', 'Tennessee', 'Michigan']
-
+  ListType: number;
+  Lists: any; 
   valMem:string;
   dietMem: string;
   recipes: Observable<any>;
+
   constructor(
     private RecipeService: RecipeService,
     private auth: AuthStateService,
@@ -37,7 +31,6 @@ export class AppComponent implements OnInit {
     public router: Router,
     public token: TokenService,
     public fb: FormBuilder,
-
     ) {
       
   }
@@ -46,42 +39,48 @@ SelectListForm = this.fb.group({
         chooseList: [''],
       });
 
-  changeList(e) {
-    //this.SelectListForm.setValue({e.target.value})
-    
+  changeList(e) 
+  {
     this.ListType = e.target.value;
-    alert(this.ListType);
+    localStorage.setItem('list_id', e.target.value);
   }
 
 
-
-  ngOnInit() {
+  async ngOnInit()
+  {
     this.recipes = this.RecipeService.getRecipes('main-corse', '');
-    this.authService.getLists().subscribe(
-      result => {
-        console.log(result);
-        this.Lists = result;
-      }
-    );
+    this.updateUserList();
 
     this.auth.userAuthState.subscribe(val => {
       this.isSignedIn = val;
-  });
+    });
   }
 
+public updateUserList()
+{
+   this.authService.getLists().subscribe(
+      result => {
+        console.log(result);
+        this.Lists = result; 
+      }
+    );
+}
+
   onSubmit() {
-  
+
 };
 
-  mealType(value, diet) {
+  mealType(value, diet)
+   {
     if (value === '') {
       value = this.valMem;
     }
+
     if (diet === ''){
       diet = this.dietMem;
     }
+    
     this.recipes = this.RecipeService.getRecipes(value, diet);
-
     this.valMem = value;
     this.dietMem= diet;
 

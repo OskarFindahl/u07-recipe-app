@@ -75,8 +75,12 @@
 >
   <select class="custom-select" (change)="changeList($event)">
     <option value="" disabled>Choose your city</option>
-    <option *ngFor="let chooseList of Lists" [ngValue]="chooseList">
-      {{ chooseList }}
+    <option
+      *ngFor="let chooseList of Lists"
+      [ngValue]="chooseList"
+      value="{{ chooseList.id }}"
+    >
+      {{ chooseList.name }}
     </option>
   </select>
 </form>

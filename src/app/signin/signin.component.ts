@@ -4,6 +4,8 @@ import { AuthService } from '../shared/auth.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { TokenService } from '../shared/token.service';
 import { AuthStateService } from '../shared/auth-state.service';
+import { AppComponent } from '../app.component';
+
 
 @Component({
   selector: 'app-signin',
@@ -13,6 +15,7 @@ import { AuthStateService } from '../shared/auth-state.service';
 
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
+  
   errors = null;
 
   constructor(
@@ -21,6 +24,8 @@ export class SigninComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
+    private appComponent: AppComponent,
+
   ) {
     this.loginForm = this.fb.group({
       email: [],
@@ -30,26 +35,26 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() { }
 
-  onSubmit() {
+  onSubmit() 
+  {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
           this.responseHandler(result);
-          
-        },
+          },
         error => {
           this.errors = error.error;
         },() => {
-          
           this.authState.setAuthState(true);
           this.loginForm.reset()
           this.router.navigate(['ShowRecipes']);
+          this.appComponent.updateUserList();
         }
       );
   }
 
   // Handle response
-  responseHandler(data){
-
+  responseHandler(data)
+  {
     this.token.handleData(data.access_token,data.user.id);
   }
 

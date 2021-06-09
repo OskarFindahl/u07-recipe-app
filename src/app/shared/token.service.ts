@@ -11,7 +11,9 @@ export class TokenService {
     register: 'http://localhost/api/auth/register',
   }
 
-  constructor() { }
+  constructor(
+    //private appComponent: AppComponent,
+  ) { }
 
   handleData(token, userId){
     localStorage.setItem('auth_token', token);

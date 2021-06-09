@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Observable } from 'rxjs';
-
-import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe';
-import { decimalDigest } from '@angular/compiler/src/i18n/digest';
 import { AuthStateService } from '../shared/auth-state.service';
 
 
@@ -35,7 +32,8 @@ export class ShowRecipesComponent implements OnInit {
 
     this.auth.userAuthState.subscribe(val => {
       this.isSignedIn = val;
-  });
+    });
+
      return this.recipes$ = this.RecipeService.getRecipes('main-corse', '');
 }
 

@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, concat, empty, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { AuthService } from './shared/auth.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
+
   //For User List
   ListIDs: Array<number> = [];
   ListINames: Array<string> = [];
-
   ListRecipes: Observable<any>;
 
   constructor(
     private http: HttpClient,
     private AuthService: AuthService,
+   
     ) {}
 
   getRecipes(mealType, diet): Observable<any> {
@@ -30,7 +32,6 @@ export class RecipeService {
   };
 
 
-
   //For User List
   AddToList(recipe): any{
     var index = recipe.indexOf("+");
@@ -42,7 +43,7 @@ export class RecipeService {
 
     //This is for the API-List connection
     this.AuthService.addToList(recipe.slice(0, index), recipe.slice(index+1)).subscribe((data:any) => {
-      console.log(data);
+      
     });
     
 
