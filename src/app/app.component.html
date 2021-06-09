@@ -131,53 +131,70 @@
   </a>
 </div>
 
-<form
-  class="w-full h-18 flex justify-center"
-  [formGroup]="SelectListForm"
-  (ngSubmit)="onSubmit()"
-  formGroupeName="SelectListForm"
->
-  <h3
-    class="
-      text-right text-blue-dark
-      font-semibold
-      py-2
-      px-4
-      border border-blue
-      rounded
-      mr-2
-    "
+<div class="w-full h-18 flex justify-center">
+  <form
+    [formGroup]="SelectListForm"
+    (ngSubmit)="onSubmit()"
+    formGroupeName="SelectListForm"
   >
-    Selected List:
-  </h3>
-  <select
-    class="
-      text-center
-      w-56
-      bg-green-500
-      hover:bg-green-200
-      text-blue-dark
-      font-semibold
-      py-2
-      px-4
-      border border-blue
-      hover:border-transparent
-      rounded
-      mr-2
-    "
-    (change)="changeList($event)"
-  >
-    <option value="" disabled>Choose your List</option>
-    <option
-      *ngFor="let chooseList of Lists"
-      [ngValue]="chooseList"
-      value="{{ chooseList.id }}"
+    <h3
+      class="
+        text-center text-blue-dark
+        font-semibold
+        py-2
+        px-4
+        border border-blue
+        rounded
+        mr-2
+      "
     >
-      {{ chooseList.name }}
-    </option>
-  </select>
-</form>
-
-<button (click)="removeList()">Remove List</button>
-
+      Selected List:
+    </h3>
+    <select
+      class="
+        text-center
+        w-56
+        bg-green-500
+        hover:bg-green-200
+        text-blue-dark
+        font-semibold
+        py-2
+        px-4
+        border border-blue
+        hover:border-transparent
+        rounded
+        mr-2
+      "
+      (change)="changeList($event)"
+    >
+      <option value="" disabled>Choose your List</option>
+      <option
+        *ngFor="let chooseList of Lists"
+        [ngValue]="chooseList"
+        value="{{ chooseList.id }}"
+      >
+        {{ chooseList.name }}
+      </option>
+    </select>
+    <button
+      class="
+        text-center
+        w-48
+        bg-red-500
+        hover:bg-red-200
+        text-blue-dark
+        font-semibold
+        py-2
+        px-4
+        border border-blue
+        hover:border-transparent
+        rounded
+        mr-2
+      "
+      (click)="removeList()"
+    >
+      Remove List
+    </button>
+  </form>
+</div>
 <router-outlet></router-outlet>
