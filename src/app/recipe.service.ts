@@ -53,7 +53,13 @@ export class RecipeService {
     // this.ListIDs.splice(index, 1);
     // this.ListINames.splice(index, 1);
 
-    console.log(index);
     
+
+    this.AuthService.removeFromList(index).subscribe(
+      result => 
+      {
+        
+      });
+
   }
 }

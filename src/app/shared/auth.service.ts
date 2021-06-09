@@ -74,12 +74,18 @@ export class AuthService {
     return this.http.get(`http://localhost/api/auth/list/${localStorage.getItem('list_id')}`);
   }
 
-  // removeFromList(): Observable<any> {
+  removeFromList(ItemId): Observable<any> {
 
-  //   return this.http.post(`http://localhost/api/auth/listname`);
-  // }
+    return this.http.post(`http://localhost/api/auth/remove/recipe/${ItemId}/list/${localStorage.getItem('list_id')}`, Headers);
+  }
 
 
+  removeList(): Observable<any> {
+
+    
+    return this.http.post(`http://localhost/api/auth/remove/listname/${localStorage.getItem('list_id')}`, Headers);
+
+  }
 
 
 }

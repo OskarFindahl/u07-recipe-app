@@ -76,15 +76,27 @@ public updateUserList()
 {
    this.authService.getLists().subscribe(
       result => {
-        console.log(result);
+       
         this.Lists = result; 
         if(!localStorage.getItem('list_id') && this.isSignedIn){
-          alert('set');
+          
           localStorage.setItem('list_id', this.Lists[0].id)
         }
 
       }
     );
+}
+
+
+public removeList()
+{
+  
+  this.authService.removeList().subscribe(
+    result => {
+      
+      
+    }
+  );
 }
 
   onSubmit() {
