@@ -50,7 +50,10 @@ export class RecipeService {
   }
 
   RemoveFromList(index): any{
-    this.ListIDs.splice(index, 1);
-    this.ListINames.splice(index, 1);
+    // this.ListIDs.splice(index, 1);
+    // this.ListINames.splice(index, 1);
+
+    console.log(index);
+    
   }
 }

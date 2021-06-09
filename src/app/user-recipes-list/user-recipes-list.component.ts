@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from '../shared/auth.service';
@@ -27,8 +26,7 @@ export class UserRecipesListComponent implements OnInit {
     })
   }
 
-  ngOnInit() 
-  {
+  public showListRecipes(){
     this.authService.getRecipesFromList().subscribe(
       result => 
       {
@@ -36,6 +34,13 @@ export class UserRecipesListComponent implements OnInit {
         this.ids = result.map(item => item.item_id); 
       }
     );
+  }
+
+  ngOnInit() 
+  {
+
+    this.showListRecipes();
+    
 
   }
 

@@ -8,6 +8,7 @@ import { AuthService } from './shared/auth.service';
 import { FormBuilder } from "@angular/forms";
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,6 +44,21 @@ SelectListForm = this.fb.group({
   {
     this.ListType = e.target.value;
     localStorage.setItem('list_id', e.target.value);
+
+
+  }
+
+  clearLocalStorage()
+  {
+    this.authService.logout().subscribe(
+      result => {
+        console.log(result);
+        this.Lists = result; 
+        localStorage.clear();
+      }
+    );
+    
+
   }
 
 
@@ -62,6 +78,11 @@ public updateUserList()
       result => {
         console.log(result);
         this.Lists = result; 
+        if(!localStorage.getItem('list_id') && this.isSignedIn){
+          alert('set');
+          localStorage.setItem('list_id', this.Lists[0].id)
+        }
+
       }
     );
 }

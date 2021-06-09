@@ -37,6 +37,12 @@ export class AuthService {
     return this.http.post('http://localhost/api/auth/login', user);
   }
 
+   // Logout
+   logout(): Observable<any> {
+    return this.http.post('http://localhost/api/auth/logout', Headers);
+  }
+
+
   // Access user profile
   profileUser(): Observable<any> {
     return this.http.get('http://localhost/api/auth/user-profile');
@@ -67,6 +73,11 @@ export class AuthService {
 
     return this.http.get(`http://localhost/api/auth/list/${localStorage.getItem('list_id')}`);
   }
+
+  // removeFromList(): Observable<any> {
+
+  //   return this.http.post(`http://localhost/api/auth/listname`);
+  // }
 
 
 
